@@ -1,3 +1,4 @@
+//questions for quiz
 var questionLine = [
 {
     title: "Commonly used data types DO NOT include:",
@@ -28,23 +29,12 @@ var questionLine = [
     correctAnswer: 0
 }]
 
-function showQuestion(q) {
-    let titleDiv = document.getElementById("title");
-    titleDiv.textContent = q.title;
-    let options = document.querySelectorAll('.choices');
-    options.forEach(function(element, index){
-        element.textContent = q.choices[index];
-    })
-    element.addEventListener("click", function(){
-        if(q.correctAnswer == index) {
-            console.log ('Correct!');
-        }
-        else {
-            console.log('Wrong');
-        }
-    })
-}
-var btn = document.getElementById('start');
-btn.addEventListener('click', function(){
-    console.log('Clicked');
-})
+var score = 0;
+var timer = document.getElementById('#start-btn');
+
+timer.addEventListener("click", function(){
+    let i = 60;
+    setInterval(function(){
+        console.log(--i);
+    }, 1000);
+    });

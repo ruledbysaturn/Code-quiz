@@ -7,29 +7,33 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <container>
+    <section>
         <div>
             <h1>Coding Quiz</h1>
             <p>Try to answer the following code-related questions within the time limit.</p>
             <p>Keep in mind that you will be penalized 10 seconds from the timer for each incorrect answer.</p>
-            <button id="start">Start!</button>
+            <button id="start-btn">Start!</button>
         </div>
-    </container>
-    <container>
-        <div id="title"></div>
+    </section>
+    <section>
+        <div class="quiz" id="title"></div>
             <ul>
                 <li class="choices"></li>
                 <li class="choices"></li>
                 <li class="choices"></li>
                 <li class="choices"></li>
             </ul>
-    </container>
-    <container>
-        <div>
-            <h2>Game Over</h2>
-            <p>Your final score is </p>
-        </div>
-    </container>
+    </section>
+    <section class = "finished">
+        <h2>Game Over</h2>
+        <p>Your final score is </p>
+        <form>
+            <label for="">Enter Initials:</label>
+            <input type="text">
+            <button id="submit-btn">Submit</button>
+        </form>
+        
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
