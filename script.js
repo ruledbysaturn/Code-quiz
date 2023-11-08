@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 //questions for quiz
 var questionLine = [
 {
@@ -60,7 +61,7 @@ function loadQuestion() {
     quizSection.style.display = 'block';
     startButton.style.display = 'none';
     var currentQuestion = questionLine[currentQuestionDisplay];
-    var titleEl = document.getElementById('titel');
+    var titleEl = document.getElementById('title');
     titleEl.textContent = currentQuestion.title;
 
     var choicesEl = document.querySelectorAll('.choices');
@@ -94,3 +95,12 @@ function checkAnswer(userAnswer, correctAnswer) {
         endQuiz();
     }
 }
+
+function endQuiz() {
+    quizSection.style.display = 'none';
+    var finishedSection = document.querySelector('.finished');
+    finishedSection.style.display = 'block';
+    var finalScoreEl = document.querySelector('.finished p');
+    finalScoreEl.textContent = 'Your final score is: ' + score;
+}
+});
