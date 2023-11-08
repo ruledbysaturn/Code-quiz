@@ -50,7 +50,7 @@ function startTimer() {
         timeLeft--;
         timerEl.textContent = 'Time: ' + timeLeft;
         
-        if (timeLeft <= 0 || currentQuestionDisplay >= questionLine.length) {
+        if (timeLeft <= 0) {
             clearInterval(timer);
             endQuiz();
         }
@@ -67,7 +67,6 @@ function loadQuestion() {
     var choicesEl = document.querySelectorAll('.choices');
     for (var i = 0; i < choicesEl.length; i++) {
         choicesEl[i].textContent = currentQuestion.choices[i];
-
         choicesEl[i].addEventListener('click', function() {
             var userAnswer = this.textContent;
             checkAnswer(userAnswer, currentQuestion.correctAnswer);
@@ -76,6 +75,7 @@ function loadQuestion() {
 }
 
 function checkAnswer(userAnswer, correctAnswer) {
+    var currentQuestionItem = questionLine[currentQuestionDisplay];
     if (userAnswer === questionLine[currentQuestionDisplay].choices[correctAnswer]) {
         score++;
     }
@@ -87,8 +87,8 @@ function checkAnswer(userAnswer, correctAnswer) {
         timerEl.textContent = 'Time: ' + timeLeft;
     }
 
-    currentQuestionDisplay++;
     if (currentQuestionDisplay < questionLine.length) {
+        currentQuestionDisplay++;
         loadQuestion();
     } 
     else {
