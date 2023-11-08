@@ -42,3 +42,14 @@ startButton.addEventListener("click", funtion () {
     loadQuestion();
 });
 
+function startTimer() {
+    var timer = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = 'Time: ' + timeLeft;
+        
+        if (timeLeft <= 0 || currentQuestion >= questionLine.length) {
+            clearInterval(timer);
+            endQuiz();
+        }
+    }, 1000);
+}
