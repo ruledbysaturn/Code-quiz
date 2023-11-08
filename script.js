@@ -37,7 +37,7 @@ var startButton = document.getElementById('start-btn');
 var timerEl = document.getElementById('timer');
 var quizSection = document.querySelector('.quiz');
 
-startButton.addEventListener("click", funtion () {
+startButton.addEventListener("click", function () {
     startTimer();
     loadQuestion();
 });
