@@ -29,12 +29,16 @@ var questionLine = [
     correctAnswer: 0
 }]
 
+var currentQuestion = 0;
 var score = 0;
-var timer = document.getElementById('#start-btn');
+var timeLeft = 60;
 
-timer.addEventListener("click", function(){
-    let i = 60;
-    setInterval(function(){
-        console.log(--i);
-    }, 1000);
-    });
+var startButton = document.getElementById('start-btn');
+var timerEl = document.getElementById('timer');
+var quizSection = document.querySelector('.quiz');
+
+startButton.addEventListener("click", funtion () {
+    startTimer();
+    loadQuestion();
+});
+
