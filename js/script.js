@@ -27,7 +27,7 @@ var questionLine = [
  {
     title: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choices: ["Javascript", "terminal/bash", "for loops", "console.log"],
-    correctAnswer: 0
+    correctAnswer: 3
 }]
 
 var currentQuestionDisplay = 0;
@@ -60,6 +60,10 @@ function startTimer() {
 function loadQuestion() {
     quizSection.style.display = 'block';
     startButton.style.display = 'none';
+    
+    var choicesList = document.querySelector('.choices-list');
+    choicesList.style.display = 'none';
+
     var currentQuestion = questionLine[currentQuestionDisplay];
     var titleEl = document.getElementById('title');
     titleEl.textContent = currentQuestion.title;
@@ -67,31 +71,34 @@ function loadQuestion() {
     var choicesEl = document.querySelectorAll('.choices');
     for (var i = 0; i < choicesEl.length; i++) {
         choicesEl[i].textContent = currentQuestion.choices[i];
-        choicesEl[i].addEventListener('click', function() {
+    }
+
+    choicesList.style.display = 'block';
+
+    for (var i = 0; i < choicesEl.length; i++) {
+        choicesEl[i].addEventListener('click', function () {
             var userAnswer = this.textContent;
             checkAnswer(userAnswer, currentQuestion.correctAnswer);
-          });
+        });
     }
 }
 
+
 function checkAnswer(userAnswer, correctAnswer) {
-    var currentQuestionItem = questionLine[currentQuestionDisplay];
-    if (userAnswer === questionLine[currentQuestionDisplay].choices[correctAnswer]) {
+    const currentQuestionItem = questionLine[currentQuestionDisplay];
+
+    if (userAnswer === currentQuestionItem.choices[correctAnswer]) {
         score++;
-    }
-    else{
+    } else {
         timeLeft -= 10;
-        if (timeLeft < 0) {
-            timeLeft = 0;
-        }
+        timeLeft = Math.max(0, timeLeft);
         timerEl.textContent = 'Time: ' + timeLeft;
     }
 
     if (currentQuestionDisplay < questionLine.length) {
         currentQuestionDisplay++;
         loadQuestion();
-    } 
-    else {
+    } else {
         endQuiz();
     }
 }
